@@ -47,7 +47,7 @@ module OmniauthMod
       },
       'credentials' => {
         'token' => ENV["TOKEN"],
-        'expires_at' => "2016-08-27 04:21:35"
+        'expires_at' => 1469633978
       }
     })
   end
