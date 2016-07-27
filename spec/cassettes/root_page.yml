@@ -21,7 +21,7 @@ http_interactions:
       Content-Type:
       - application/json
       Date:
-      - Wed, 27 Jul 2016 18:48:57 GMT
+      - Wed, 27 Jul 2016 19:30:39 GMT
       Server:
       - Apache/2.4.16 (Amazon) OpenSSL/1.0.1k-fips PHP/5.5.28
       Vary:
@@ -31,35 +31,36 @@ http_interactions:
       X-Ratelimit-Limit:
       - '400'
       X-Ratelimit-Remaining:
-      - '368'
+      - '285'
       Content-Length:
-      - '1117'
+      - '1105'
       Connection:
       - keep-alive
     body:
       encoding: ASCII-8BIT
-      string: '{"message":"Request Successful","data":{"id":"RVMtbd","name":"Brewers''
-        Cut No. 6","nameDisplay":"Brewers'' Cut No. 6","description":"An epic Blonde
-        Barleywine fashioned by the great brewers at the now-deceased Bitter End Brewery.
-        A golden opportunity, and 8 years of pleading from our head cellarman Von
-        J, have brought us full circle to this highly anticipated resurrection, 10
-        years to the very day of its first and only brew.","abv":"9.3","ibu":"50","availableId":2,"styleId":34,"isOrganic":"N","labels":{"icon":"https:\/\/s3.amazonaws.com\/brewerydbapi\/beer\/RVMtbd\/upload_RgctCv-icon.png","medium":"https:\/\/s3.amazonaws.com\/brewerydbapi\/beer\/RVMtbd\/upload_RgctCv-medium.png","large":"https:\/\/s3.amazonaws.com\/brewerydbapi\/beer\/RVMtbd\/upload_RgctCv-large.png"},"status":"verified","statusDisplay":"Verified","createDate":"2013-01-17
-        12:28:37","updateDate":"2015-12-16 21:50:00","available":{"id":2,"name":"Limited","description":"Limited
-        availability."},"style":{"id":34,"categoryId":3,"category":{"id":3,"name":"North
-        American Origin Ales","createDate":"2012-03-21 20:06:45"},"name":"American-Style
-        Barley Wine Ale","shortName":"American Barleywine","description":"American
-        style barley wines range from amber to deep copper-garnet in color and have
-        a full body and high residual malty sweetness. Complexity of alcohols and
-        fruity-ester characters are often high and counterbalanced by assertive bitterness
-        and extraordinary alcohol content. Hop aroma and flavor are at medium to very
-        high levels. American type hops are often used but not necessary for this
-        style. Very low levels of diacetyl may be acceptable. A caramel and\/or toffee
-        aroma and flavor are often part of the character. Characters indicating oxidation,
-        such as vinous (sometimes sherry-like) aromas and\/or flavors, are not generally
-        acceptable in American-style Barley Wine Ale, however if a low level of age-induced
-        oxidation character harmonizes and enhances the overall experience this can
-        be regarded favorably. Chill haze is allowable at cold temperatures.","ibuMin":"60","ibuMax":"100","abvMin":"8.4","abvMax":"12","srmMin":"11","srmMax":"22","ogMin":"1.09","fgMin":"1.024","fgMax":"1.028","createDate":"2012-03-21
-        20:06:46","updateDate":"2015-04-07 15:27:08"}},"status":"success"}'
+      string: '{"message":"Request Successful","data":{"id":"piok65","name":"Golden
+        Sabbath","nameDisplay":"Golden Sabbath","description":"A Belgian-style strong
+        golden ale with a wondrous range of fruit flavors like plum, apricot, and
+        cherry imparted by special Belgian yeast. Traditionally served in special
+        goblets this style of beer can turn an ordinary lunch into an extraordinary
+        event and a slow Sunday afternoon into a special Golden Sabbath.","abv":"8.5","ibu":"30","glasswareId":5,"availableId":4,"styleId":63,"isOrganic":"N","labels":{"icon":"https:\/\/s3.amazonaws.com\/brewerydbapi\/beer\/piok65\/upload_jF4gfa-icon.png","medium":"https:\/\/s3.amazonaws.com\/brewerydbapi\/beer\/piok65\/upload_jF4gfa-medium.png","large":"https:\/\/s3.amazonaws.com\/brewerydbapi\/beer\/piok65\/upload_jF4gfa-large.png"},"status":"verified","statusDisplay":"Verified","createDate":"2012-01-03
+        02:43:17","updateDate":"2015-12-16 13:33:16","glass":{"id":5,"name":"Pint","createDate":"2012-01-03
+        02:41:33"},"available":{"id":4,"name":"Seasonal","description":"Available
+        at the same time of year, every year."},"style":{"id":63,"categoryId":5,"category":{"id":5,"name":"Belgian
+        And French Origin Ales","createDate":"2012-03-21 20:06:46"},"name":"Belgian-Style
+        Pale Strong Ale","shortName":"Belgian Pale Strong","description":"Belgian
+        pale strong ales are pale to golden in color with relatively light body for
+        a beer of its alcoholic strength. Often brewed with light colored Belgian
+        \"candy\" sugar, these beers are well attenuated. The perception of hop bitterness
+        is medium-low to medium -high, with hop flavor and aroma also in this range.
+        These beers are highly attenuated and have a perceptively deceiving high alcoholic
+        character-being light to medium bodied rather than full bodied. The intensity
+        of malt character should be low to medium, often surviving along with a complex
+        fruitiness. Very little or no diacetyl is perceived. Herbs and spices are
+        sometimes used to delicately flavor these strong ales. Low levels of phenolic
+        spiciness from yeast byproducts may also be perceived. Chill haze is allowable
+        at cold temperatures.","ibuMin":"20","ibuMax":"50","abvMin":"7","abvMax":"11","srmMin":"4","srmMax":"10","ogMin":"1.064","fgMin":"1.012","fgMax":"1.024","createDate":"2012-03-21
+        20:06:46","updateDate":"2015-04-07 15:32:16"}},"status":"success"}'
     http_version: 
-  recorded_at: Wed, 27 Jul 2016 18:48:59 GMT
+  recorded_at: Wed, 27 Jul 2016 19:30:41 GMT
 recorded_with: VCR 3.0.3
