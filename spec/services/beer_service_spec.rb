@@ -3,7 +3,7 @@ require 'rails_helper'
 describe "BeerService" do
   context "#all_beers" do
     it 'returns a list of beers' do
-      # VCR.use_cassette("beer_by_name") do
+      VCR.use_cassette("beer_by_name") do
         name = "Cutthroat Porter"
         beer = BeerService.new.beer_by_name(name)
 
@@ -14,7 +14,7 @@ describe "BeerService" do
         expect(beer_info.first['description']).to include("stout")
         expect(beer_info.first['abv']).to eq("5.1")
         expect(beer_info.first['ibu']).to eq("43")
-      # end
+      end
     end
   end
 end
