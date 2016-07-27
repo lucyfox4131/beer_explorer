@@ -8,6 +8,10 @@ class BeerService
     parse(connection.get("/v2/beers", name_params(name)))
   end
 
+  def random
+    parse(connection.get("/v2/beer/random", api_key))
+  end
+
   def parse(response)
     JSON.parse(response.body)
   end
@@ -16,6 +20,12 @@ class BeerService
     {
       key: ENV["BREWERYAPIKEY"],
       name: name
+    }
+  end
+
+  def api_key
+    {
+      key: ENV["BREWERYAPIKEY"],
     }
   end
 

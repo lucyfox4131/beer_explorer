@@ -1,0 +1,65 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.brewerydb.com/v2/beer/random?key=c04edc1c5e599294950009398daa7163
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 27 Jul 2016 18:48:57 GMT
+      Server:
+      - Apache/2.4.16 (Amazon) OpenSSL/1.0.1k-fips PHP/5.5.28
+      Vary:
+      - Accept-Encoding,User-Agent
+      X-Powered-By:
+      - PHP/5.5.28
+      X-Ratelimit-Limit:
+      - '400'
+      X-Ratelimit-Remaining:
+      - '368'
+      Content-Length:
+      - '1117'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"message":"Request Successful","data":{"id":"RVMtbd","name":"Brewers''
+        Cut No. 6","nameDisplay":"Brewers'' Cut No. 6","description":"An epic Blonde
+        Barleywine fashioned by the great brewers at the now-deceased Bitter End Brewery.
+        A golden opportunity, and 8 years of pleading from our head cellarman Von
+        J, have brought us full circle to this highly anticipated resurrection, 10
+        years to the very day of its first and only brew.","abv":"9.3","ibu":"50","availableId":2,"styleId":34,"isOrganic":"N","labels":{"icon":"https:\/\/s3.amazonaws.com\/brewerydbapi\/beer\/RVMtbd\/upload_RgctCv-icon.png","medium":"https:\/\/s3.amazonaws.com\/brewerydbapi\/beer\/RVMtbd\/upload_RgctCv-medium.png","large":"https:\/\/s3.amazonaws.com\/brewerydbapi\/beer\/RVMtbd\/upload_RgctCv-large.png"},"status":"verified","statusDisplay":"Verified","createDate":"2013-01-17
+        12:28:37","updateDate":"2015-12-16 21:50:00","available":{"id":2,"name":"Limited","description":"Limited
+        availability."},"style":{"id":34,"categoryId":3,"category":{"id":3,"name":"North
+        American Origin Ales","createDate":"2012-03-21 20:06:45"},"name":"American-Style
+        Barley Wine Ale","shortName":"American Barleywine","description":"American
+        style barley wines range from amber to deep copper-garnet in color and have
+        a full body and high residual malty sweetness. Complexity of alcohols and
+        fruity-ester characters are often high and counterbalanced by assertive bitterness
+        and extraordinary alcohol content. Hop aroma and flavor are at medium to very
+        high levels. American type hops are often used but not necessary for this
+        style. Very low levels of diacetyl may be acceptable. A caramel and\/or toffee
+        aroma and flavor are often part of the character. Characters indicating oxidation,
+        such as vinous (sometimes sherry-like) aromas and\/or flavors, are not generally
+        acceptable in American-style Barley Wine Ale, however if a low level of age-induced
+        oxidation character harmonizes and enhances the overall experience this can
+        be regarded favorably. Chill haze is allowable at cold temperatures.","ibuMin":"60","ibuMax":"100","abvMin":"8.4","abvMax":"12","srmMin":"11","srmMax":"22","ogMin":"1.09","fgMin":"1.024","fgMax":"1.028","createDate":"2012-03-21
+        20:06:46","updateDate":"2015-04-07 15:27:08"}},"status":"success"}'
+    http_version: 
+  recorded_at: Wed, 27 Jul 2016 18:48:59 GMT
+recorded_with: VCR 3.0.3
