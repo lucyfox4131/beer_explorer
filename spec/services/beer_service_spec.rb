@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 describe "BeerService" do
-  context "#all_beers" do
-    it 'returns a list of beers' do
+  context "#beer_by_name" do
+    it 'returns a beer by name' do
       VCR.use_cassette("beer_by_name") do
         name = "Cutthroat Porter"
         beer = BeerService.new.beer_by_name(name)

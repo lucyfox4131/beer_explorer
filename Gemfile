@@ -28,6 +28,9 @@ gem "omniauth-google-oauth2"
 gem 'rails_12factor', group: :production
 
 gem 'figaro'
+
+gem 'bootstrap-sass', '~> 3.3.6'
+# gem 'autoprefixer-rails'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
