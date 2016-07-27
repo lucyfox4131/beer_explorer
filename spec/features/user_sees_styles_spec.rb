@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.feature "Categories" do
-  scenario "user starts on root page and view categories of beer" do
+RSpec.feature "Styles" do
+  scenario "user starts on root page and view styles of beer" do
     visit "/"
 
     click_on "Start Exploring"
@@ -9,5 +9,8 @@ RSpec.feature "Categories" do
 
     expect(current_path).to eq(styles_path)
     expect(page).to have_content("Styles of beers")
+
+    expect(page).to have_content("Porter")
+    expect(page).to have_content("IPA")
   end
 end

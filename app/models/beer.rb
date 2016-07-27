@@ -1,7 +1,8 @@
 class Beer
-  attr_reader :id, :name, :description, :abv, :ibu, :style_name, :style_description
+  attr_reader :beer_id, :name, :description, :abv, :ibu, :style_name, :style_description
+
   def initialize(beer)
-    @id                 = beer["data"]["id"]
+    @beer_id            = beer["data"]["id"]
     @name               = beer["data"]["name"]
     @description        = beer["data"]["description"]
     @abv                = beer["data"]["abv"]

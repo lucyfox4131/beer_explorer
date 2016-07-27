@@ -1,1 +1,8 @@
 <h1>Styles of beers</h1>
+
+<% @styles.each do |style| %>
+  <h3><%= style.name %>: </h3>
+  <p>
+    <%= style.description %>
+  </p>
+<% end %>
