@@ -1,15 +1,13 @@
 <div class="container">
+  <h1>Featured Brewery of The Week</h1>
+  <%= @brewery.name %><br>
+  <%= @brewery.description %><br>
 
-<h1>Beer of the Moment</h1>
-  <h3><%= @beer.name %></h3>
+  <h1>Featured Beer of The Week</h1>
+  <%= @beer.name %>
   <p>
-    ABV: <%= @beer.abv %>% <br>
-    IBU: <%= @beer.ibu %> <br>
+    ABV:<%= @beer.abv %><br>
+    IBU:<%= @beer.ibu %><br>
     <%= @beer.description %>
-  </p>
-  <h5>Style Information</h5>
-  <p>
-    <%= @beer.style_name if @beer.style_name%>:
-    <%= @beer.style_description if @beer.style_description %>
   </p>
 </div>

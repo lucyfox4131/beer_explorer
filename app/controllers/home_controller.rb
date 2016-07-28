@@ -1,5 +1,7 @@
 class HomeController < ApplicationController
   def show
-    @beer = BeerSearch.find_random
+    featured  = FeaturedBeer.featured
+    @brewery  = featured[:brewery]
+    @beer     = featured[:beer]
   end
 end

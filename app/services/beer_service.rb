@@ -8,8 +8,8 @@ class BeerService
     parse(connection.get("/v2/beers", name_params(name)))
   end
 
-  def random
-    parse(connection.get("/v2/beer/random", api_key))
+  def featured
+    parse(connection.get("/v2/featured", api_key))
   end
 
   def all_styles
