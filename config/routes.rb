@@ -8,5 +8,5 @@ Rails.application.routes.draw do
   resources :styles, only: [:index, :show]
   resources :sessions, only: [:create, :destroy]
   resource :home, only: [:show]
-
+  resources :beers, only: [:show]
 end

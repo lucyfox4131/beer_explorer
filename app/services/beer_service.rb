@@ -24,6 +24,10 @@ class BeerService
     parse(connection.get("/v2/beers", style_params(id)))
   end
 
+  def find_beer(id)
+    parse(connection.get("/v2/beer/#{id}", api_key))
+  end
+
   def parse(response)
     JSON.parse(response.body)
   end

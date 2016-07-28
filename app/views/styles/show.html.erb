@@ -7,6 +7,6 @@
   <!-- It'd be nice to use ajax here but how do I send through the style param? -->
   <h3>Beers with this Style:</h3>
     <% @beers.each do |beer| %>
-      <%= beer.name %>
+      <%= link_to beer.name, beer_path(beer.beer_id) %><br>
     <% end %>
 </div>

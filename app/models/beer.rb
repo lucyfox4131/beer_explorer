@@ -16,4 +16,9 @@ class Beer
       new(beer)
     end
   end
+
+  def self.find_beer(id)
+    beer = BeerService.new.find_beer(id)
+    new(beer["data"])
+  end
 end
