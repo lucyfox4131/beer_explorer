@@ -1,6 +1,6 @@
 class Style
   attr_reader :style_id, :name, :description, :ibu_min, :ibu_max, :abv_min, :abv_max
-  
+
   def initialize(style)
     @style_id = style['id']
     @name = style['name']
@@ -12,7 +12,7 @@ class Style
   end
 
   def self.get_all
-    styles = StyleService.new.all_styles
+    styles = BeerService.new.all_styles
     create_styles(styles['data'])
   end
 

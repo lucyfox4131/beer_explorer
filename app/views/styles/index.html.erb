@@ -1,7 +1,7 @@
 <h1>Styles of beers</h1>
 
 <% @styles.each do |style| %>
-  <h3><%= style.name %>: </h3>
+  <h3><%= link_to style.name, style_path(style.style_id) %>: </h3>
   <p>
     <%= style.description %>
   </p>

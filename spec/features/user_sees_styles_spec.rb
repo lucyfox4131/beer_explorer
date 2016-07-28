@@ -9,8 +9,10 @@ RSpec.feature "Styles" do
 
     expect(current_path).to eq(styles_path)
     expect(page).to have_content("Styles of beers")
+    expect(page).to have_link("Scottish-Style Light Ale")
 
-    expect(page).to have_content("Porter")
-    expect(page).to have_content("IPA")
+    click_link "Scottish-Style Light Ale"
+
+    expect(page).to have_content("ABV")
   end
 end
