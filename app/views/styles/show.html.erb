@@ -1,0 +1,12 @@
+<h1><%= @style.name %>  </h1>
+<h4> <%= @style.info_paragraph %> </h4>
+<p> <%= @style.description %> </p>
+
+<div class="beer-button">
+  <!-- <button name="button-fetch" class="btn btn-default">See Beers with this Style</button> -->
+  <!-- It'd be nice to use ajax here but how do I send through the style param? -->
+  <h3>Beers with this Style:</h3>
+    <% @beers.each do |beer| %>
+      <%= link_to beer.name, beer_path(beer.beer_id) %><br>
+    <% end %>
+</div>
