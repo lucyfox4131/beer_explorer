@@ -11,8 +11,12 @@ class Style
     @abv_max = style['abvMax']
   end
 
+  def self.service
+    @service = @service ||= BeerService.new
+  end
+
   def self.get_all
-    styles = BeerService.new.all_styles
+    styles = service.all_styles
     create_styles(styles['data'])
   end
 
@@ -20,5 +24,19 @@ class Style
     styles.map do |style|
       new(style)
     end
+  end
+
+  def self.find_style(id)
+    style = service.find_style(id)
+    new(style['data'])
+  end
+
+  def self.get_beers(id)
+    beers = service.find_beers_for_style(id)
+    Beer.create_beers(beers["data"])
+  end
+
+  def info_paragraph
+    "Beers of this style typically have an IBU range of #{ibu_min} - #{ibu_max}, and an ABV range of #{abv_min}% - #{abv_max}%."
   end
 end

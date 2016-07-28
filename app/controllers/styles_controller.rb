@@ -4,6 +4,7 @@ class StylesController < ApplicationController
   end
 
   def show
-    style_id = params['id']
+    @style = Style.find_style(params['id'])
+    @beers = Style.get_beers(params['id'])
   end
 end

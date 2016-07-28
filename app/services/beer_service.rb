@@ -16,6 +16,14 @@ class BeerService
     parse(connection.get("/v2/styles", api_key))
   end
 
+  def find_style(id)
+    parse(connection.get("/v2/style/#{id}", api_key))
+  end
+
+  def find_beers_for_style(id)
+    parse(connection.get("/v2/beers", style_params(id)))
+  end
+
   def parse(response)
     JSON.parse(response.body)
   end
@@ -30,6 +38,13 @@ class BeerService
   def api_key
     {
       key: ENV["BREWERYAPIKEY"],
+    }
+  end
+
+  def style_params(id)
+    {
+      key: ENV["BREWERYAPIKEY"],
+      styleId: id
     }
   end
 
