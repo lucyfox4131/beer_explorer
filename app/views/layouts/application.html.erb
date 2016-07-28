@@ -19,6 +19,8 @@
       </button>
       <a class="navbar-brand" href="/">BeerExplorer</a>
     </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <% if current_user %>
           <li>Signed in as <%= current_user.name %></li>
@@ -37,6 +39,7 @@
           </ul>
         </li>
       </ul>
+    </div>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
