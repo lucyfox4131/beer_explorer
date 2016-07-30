@@ -4,7 +4,7 @@ class RatedBeers < ActiveRecord::Migration[5.0]
       t.string :api_id
       t.string :name
       t.string :style_id
-      t.references :rated_breweries, index: true, foreign_key: true
+      t.references :rated_brewery, index: true, foreign_key: true
 
       t.timestamps
     end

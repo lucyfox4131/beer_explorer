@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   resource :home, only: [:show]
   resources :beers, only: [:show]
   resources :breweries, only: [:index, :show]
+  resources :rated_beers, only: [:create]
 end

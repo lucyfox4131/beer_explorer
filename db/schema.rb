@@ -19,14 +19,14 @@ ActiveRecord::Schema.define(version: 20160730165846) do
     t.string   "api_id"
     t.string   "name"
     t.string   "style_id"
-    t.integer  "rated_breweries_id"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
-    t.index ["rated_breweries_id"], name: "index_rated_beers_on_rated_breweries_id", using: :btree
+    t.integer  "rated_brewery_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["rated_brewery_id"], name: "index_rated_beers_on_rated_brewery_id", using: :btree
   end
 
   create_table "rated_breweries", force: :cascade do |t|
-    t.string   "api_key"
+    t.string   "api_id"
     t.string   "name"
     t.string   "image"
     t.string   "postal_code"
@@ -36,10 +36,10 @@ ActiveRecord::Schema.define(version: 20160730165846) do
 
   create_table "user_rated_beers", force: :cascade do |t|
     t.integer "rating"
-    t.integer "users_id"
-    t.integer "rated_beers_id"
-    t.index ["rated_beers_id"], name: "index_user_rated_beers_on_rated_beers_id", using: :btree
-    t.index ["users_id"], name: "index_user_rated_beers_on_users_id", using: :btree
+    t.integer "user_id"
+    t.integer "rated_beer_id"
+    t.index ["rated_beer_id"], name: "index_user_rated_beers_on_rated_beer_id", using: :btree
+    t.index ["user_id"], name: "index_user_rated_beers_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 20160730165846) do
     t.datetime "updated_at",       null: false
   end
 
-  add_foreign_key "rated_beers", "rated_breweries", column: "rated_breweries_id"
-  add_foreign_key "user_rated_beers", "rated_beers", column: "rated_beers_id"
-  add_foreign_key "user_rated_beers", "users", column: "users_id"
+  add_foreign_key "rated_beers", "rated_breweries"
+  add_foreign_key "user_rated_beers", "rated_beers"
+  add_foreign_key "user_rated_beers", "users"
 end
