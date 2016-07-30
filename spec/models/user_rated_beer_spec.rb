@@ -15,7 +15,9 @@ RSpec.describe UserRatedBeer, type: :model do
       expect(user_rated_beer.rating).to eq(0)
 
       new_rating = 1
-      record = UserRatedBeer.find_rated_beer(rated_beer.id, new_rating, user.id)
+      UserRatedBeer.find_rated_beer(rated_beer.id, new_rating, user.id)
+
+      record = UserRatedBeer.find(user_rated_beer.id)
 
       expect(record.rating).to eq(new_rating)
     end
