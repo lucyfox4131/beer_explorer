@@ -12,6 +12,8 @@ class RatedBeer < ApplicationRecord
     if beer
       UserRatedBeer.find_rated_beer(beer.id, rating, current_user.id)
     else
+      data = service.find_beer_with_breweries(beer_id)["data"]
+      create_ratings(data)
       # service.#get beer with the brewery information, create a rated brewery, create a rated beer, create new user rated beer
     end
 
@@ -22,5 +24,13 @@ class RatedBeer < ApplicationRecord
 
   end
 
+  def self.create_ratings(data)
+    brewery = RatedBrewery.create_new(data["brewery"])
+    create_rated_beer(data)
+  end
+
+  def self.create_rated_beer(data)
+    # RatedBrewery.create()
+  end
 
 end
