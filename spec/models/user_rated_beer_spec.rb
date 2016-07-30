@@ -17,8 +17,7 @@ RSpec.describe UserRatedBeer, type: :model do
       new_rating = 1
       record = UserRatedBeer.find_rated_beer(rated_beer.id, new_rating, user.id)
 
-      #WHY THE HELL DOESN"T THIS WORK>>>>>>>>>>>>>>
-      # expect(record.rating).to eq(new_rating)
+      expect(record.rating).to eq(new_rating)
     end
 
     it "doesn't exist, create new" do
