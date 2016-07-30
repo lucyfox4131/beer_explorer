@@ -1,0 +1,9 @@
+<h1><%= @brewery.name %></h1>
+
+<h3> <%= @brewery.name %> Beers:</h3>
+
+<ul>
+<% @brewery.beers.each do |beer| %>
+  <li><%= beer.name %></li>
+<% end %>
+</ul>

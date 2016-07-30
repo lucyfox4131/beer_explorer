@@ -16,6 +16,18 @@ class BeerService
     parse(connection.get("/v2/styles", api_key))
   end
 
+  def all_breweries
+    parse(connection.get("/v2/breweries", brewery_params))
+  end
+
+  def find_brewery(id)
+    parse(connection.get("/v2/brewery/#{id}", api_key))
+  end
+
+  def beers_for_brewery(id)
+    parse(connection.get("/v2/brewery/#{id}/beers", api_key))
+  end
+
   def find_style(id)
     parse(connection.get("/v2/style/#{id}", api_key))
   end
@@ -32,10 +44,23 @@ class BeerService
     JSON.parse(response.body)
   end
 
+  private
+
+  def connection
+    @_connection
+  end
+
   def name_params(name)
     {
       key: ENV["BREWERYAPIKEY"],
       name: name
+    }
+  end
+
+  def brewery_params
+    {
+      key: ENV["BREWERYAPIKEY"],
+      withLocations: "Y"
     }
   end
 
@@ -50,11 +75,5 @@ class BeerService
       key: ENV["BREWERYAPIKEY"],
       styleId: id
     }
-  end
-
-  private
-
-  def connection
-    @_connection
   end
 end
