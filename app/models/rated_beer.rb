@@ -8,13 +8,19 @@ class RatedBeer < ApplicationRecord
   end
 
   def self.rate(beer_id, rating, current_user)
+    beer = RatedBeer.find_by(api_id: beer_id)
+    if beer
+      UserRatedBeer.find_rated_beer(beer.id, rating, current_user.id)
+    else
+      # service.#get beer with the brewery information, create a rated brewery, create a rated beer, create new user rated beer
+    end
 
-    # where(provider: auth.provider, uid: auth.uid).first_or_initialize.tap do |user|
-    #   user.provider = auth.provider
-    #   user.uid = auth.uid
-    #   user.name = auth.info.name
-    #   user.oauth_token = auth.credentials.token
-    #   user.oauth_expires_at = Time.at(auth.credentials.expires_at)
-    #   user.save!
+    #is there a user rated beer existing that has both beer id and current user
+    #if this is true, update the rating, else create new one
+    #when creating new one we must first create the rated brewery with brew info, then the beer, then the user rated beer
+    # probably a good idea for most of this to be wrapped within some sort of a context block so that we know it all succeeds
+
   end
+
+
 end
