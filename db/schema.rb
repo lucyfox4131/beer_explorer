@@ -34,12 +34,12 @@ ActiveRecord::Schema.define(version: 20160730165846) do
     t.datetime "updated_at",  null: false
   end
 
-  create_table "user_rated_beers_tables", force: :cascade do |t|
+  create_table "user_rated_beers", force: :cascade do |t|
     t.integer "rating"
     t.integer "users_id"
     t.integer "rated_beers_id"
-    t.index ["rated_beers_id"], name: "index_user_rated_beers_tables_on_rated_beers_id", using: :btree
-    t.index ["users_id"], name: "index_user_rated_beers_tables_on_users_id", using: :btree
+    t.index ["rated_beers_id"], name: "index_user_rated_beers_on_rated_beers_id", using: :btree
+    t.index ["users_id"], name: "index_user_rated_beers_on_users_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -53,6 +53,6 @@ ActiveRecord::Schema.define(version: 20160730165846) do
   end
 
   add_foreign_key "rated_beers", "rated_breweries", column: "rated_breweries_id"
-  add_foreign_key "user_rated_beers_tables", "rated_beers", column: "rated_beers_id"
-  add_foreign_key "user_rated_beers_tables", "users", column: "users_id"
+  add_foreign_key "user_rated_beers", "rated_beers", column: "rated_beers_id"
+  add_foreign_key "user_rated_beers", "users", column: "users_id"
 end
