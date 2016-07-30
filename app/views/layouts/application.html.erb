@@ -24,7 +24,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <% if current_user %>
-          <li>Signed in as <%= current_user.name %></li>
+          <li><%= link_to "Signed in as #{current_user.name}", dashboard_path %></li>
           <li><%= link_to "Sign Out", signout_path, id: "sign_out" %></li>
         <% else %>
           <li><%= link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in" %></li>
