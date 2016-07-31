@@ -10,27 +10,27 @@ class RatedBeer < ApplicationRecord
   def self.rate(beer_id, rating, current_user)
     beer = RatedBeer.find_by(api_id: beer_id)
     if beer
-      UserRatedBeer.find_rated_beer(beer.id, rating, current_user.id)
+      user_rating(beer.id, rating, current_user.id)
     else
       data = service.find_beer_with_breweries(beer_id)["data"]
-      create_ratings(data)
-      # service.#get beer with the brewery information, create a rated brewery, create a rated beer, create new user rated beer
+      new_beer = create_ratings(data)
+      user_rating(new_beer.id, rating, current_user.id)
     end
+  end
 
-    #is there a user rated beer existing that has both beer id and current user
-    #if this is true, update the rating, else create new one
-    #when creating new one we must first create the rated brewery with brew info, then the beer, then the user rated beer
-    # probably a good idea for most of this to be wrapped within some sort of a context block so that we know it all succeeds
-
+  def self.user_rating(beer_id, rating, user_id)
+    UserRatedBeer.find_rated_beer(beer_id, rating, user_id)
   end
 
   def self.create_ratings(data)
-    brewery = RatedBrewery.create_new(data["brewery"])
-    create_rated_beer(data)
+    brewery = RatedBrewery.create_new(data["breweries"].first)
+    create_rated_beer(data, brewery.id)
   end
 
-  def self.create_rated_beer(data)
-    # RatedBrewery.create()
+  def self.create_rated_beer(data, brewery_id)
+    RatedBeer.create(api_id: data["id"],
+                     name: data["name"],
+                     style_id: data["styleId"],
+                     rated_brewery_id: brewery_id)
   end
-
 end

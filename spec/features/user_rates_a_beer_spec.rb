@@ -2,6 +2,10 @@ require 'rails_helper'
 
 RSpec.feature "User rates a beer" do
   scenario "visits show page to rate beer" do
+    user = create(:user, name: "Lucy")
+
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return( user )
+
     visit beer_path("XXgGZ4")
 
     expect(page).to have_content("Cutthroat Porter")
