@@ -1,2 +1,13 @@
-<h1>Home#show</h1>
-<p>Find me in app/views/home/show.html.erb</p>
+<div class="container">
+  <h1>Featured Brewery of The Week</h1>
+  <%= @brewery.name %><br>
+  <%= @brewery.description %><br>
+
+  <h1>Featured Beer of The Week</h1>
+  <%= @beer.name %>
+  <p>
+    ABV:<%= @beer.abv %><br>
+    IBU:<%= @beer.ibu %><br>
+    <%= @beer.description %>
+  </p>
+</div>

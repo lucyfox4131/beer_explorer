@@ -1,0 +1,10 @@
+<h1><%= @style.name %>  </h1>
+<h4> <%= @style.info_paragraph %> </h4>
+<p> <%= @style.description %> </p>
+
+<div class="beer-button">
+  <h3>Beers with this Style:</h3>
+    <% @style.beers.each do |beer| %>
+      <%= link_to beer.name, beer_path(beer.beer_id) %><br>
+    <% end %>
+</div>

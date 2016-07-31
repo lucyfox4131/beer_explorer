@@ -17,6 +17,8 @@
 .byebug_history
 
 /coverage/*
-
+/spec/cassettes/*
 # Ignore application configuration
 /config/application.yml
+
+.DS_store
