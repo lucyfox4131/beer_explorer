@@ -6,8 +6,9 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   </head>
+  <!-- <%#= @style_class %> -->
   <body>
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-de>ault">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -23,7 +24,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <% if current_user %>
-          <li>Signed in as <%= current_user.name %></li>
+          <li><%= link_to "Signed in as #{current_user.name}", dashboard_path %></li>
           <li><%= link_to "Sign Out", signout_path, id: "sign_out" %></li>
         <% else %>
           <li><%= link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in" %></li>
@@ -35,7 +36,7 @@
             <li><a href="/styles">Styles</a></li>
             <li><a href="#">Events</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="#">Breweries</a></li>
+            <li><a href="/breweries">Breweries</a></li>
           </ul>
         </li>
       </ul>
@@ -44,6 +45,14 @@
   </div><!-- /.container-fluid -->
 </nav>
 
+  <% flash.each do |type, message| %>
+  <div class="alert alert-<%= type %> text-center alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span></button>
+  <%= sanitize(message) %>
+  </div>
+  <% end %>
+  
     <%= yield %>
 
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>

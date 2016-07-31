@@ -30,4 +30,26 @@ describe "BeerService" do
       end
     end
   end
+
+  context "#all_breweries" do
+    it 'returns a list of all breweries' do
+      VCR.use_cassette("breweries") do
+        breweries = BeerService.new.all_breweries['data']
+        brewery = breweries.first
+
+        expect(breweries.count).to eq(50)
+        expect(brewery["id"]).to eq("YXDiJk")
+        expect(brewery["name"]).to eq("#FREEDOM Craft Brewery")
+      end
+    end
+  end
+
+  context "#find_brewery" do
+    it 'returns a single brewery' do
+      brewery = BeerService.new.find_brewery("YXDiJk")['data']
+
+      expect(brewery["id"]).to eq("YXDiJk")
+      expect(brewery["name"]).to eq("#FREEDOM Craft Brewery")
+    end
+  end
 end

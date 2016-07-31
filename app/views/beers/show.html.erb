@@ -1,2 +1,9 @@
 <h1><%= @beer.name %></h1>
 <p><%= @beer.description %></p>
+
+<h3>Rate <%= @beer.name %> </h3>
+
+<div class="rate-beer">
+  <%= button_to "Like", rated_beers_path, params: {name: @beer.name, id: @beer.beer_id, rate: 1} %>
+  <%= button_to "Dislike", rated_beers_path, params: {name: @beer.name, id: @beer.beer_id, rate: 0} %>
+</div>

@@ -31,8 +31,8 @@ class Style
     new(style['data'])
   end
 
-  def self.get_beers(id)
-    beers = service.find_beers_for_style(id)
+  def beers
+    beers = BeerService.new.find_beers_for_style(self.style_id)
     Beer.create_beers(beers["data"])
   end
 

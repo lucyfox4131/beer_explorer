@@ -10,10 +10,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160727024833) do
+ActiveRecord::Schema.define(version: 20160730213413) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "rated_beers", force: :cascade do |t|
+    t.string   "api_id"
+    t.string   "name"
+    t.string   "style_id"
+    t.integer  "rated_brewery_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["rated_brewery_id"], name: "index_rated_beers_on_rated_brewery_id", using: :btree
+  end
+
+  create_table "rated_breweries", force: :cascade do |t|
+    t.string   "api_id"
+    t.string   "name"
+    t.string   "image"
+    t.string   "postal_code"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "user_rated_beers", force: :cascade do |t|
+    t.integer  "rating"
+    t.integer  "user_id"
+    t.integer  "rated_beer_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["rated_beer_id"], name: "index_user_rated_beers_on_rated_beer_id", using: :btree
+    t.index ["user_id"], name: "index_user_rated_beers_on_user_id", using: :btree
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "provider"
@@ -25,4 +54,7 @@ ActiveRecord::Schema.define(version: 20160727024833) do
     t.datetime "updated_at",       null: false
   end
 
+  add_foreign_key "rated_beers", "rated_breweries"
+  add_foreign_key "user_rated_beers", "rated_beers"
+  add_foreign_key "user_rated_beers", "users"
 end
