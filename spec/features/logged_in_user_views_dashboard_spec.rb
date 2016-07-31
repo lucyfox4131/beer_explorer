@@ -15,4 +15,11 @@ RSpec.feature "Logged in User" do
     expect(page).to have_content("Sorry, you do not have any rated beers. Go rate some beers!")
     expect(page).to have_content("Please rate beers in order to get recommendations")
   end
+
+  scenario "a user not logged in will be redirected" do
+    visit dashboard_path
+
+    expect(page).to have_content("Please Sign In To See Your Dashbaord")
+    expect(current_path).to eq(root_path)
+  end
 end
