@@ -8,6 +8,10 @@ class BeerService
     parse(connection.get("/v2/beers", name_params(name)))
   end
 
+  def brewery_by_name(name)
+    parse(connection.get("/v2/breweries", name_params(name)))
+  end
+
   def featured
     parse(connection.get("/v2/featured", api_key))
   end

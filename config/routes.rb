@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   namespace :service, defaults: { format: :json} do
     get '/beer_search', to: 'beer_search#index', as: 'beer_search'
+    get '/brewery_search', to: 'brewery_search#index', as: 'brewery_search'
   end
 
   resources :styles, only: [:index, :show]
