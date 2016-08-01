@@ -32,7 +32,7 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Start Exploring <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Explore Beers</a></li>
+            <li><a href="/beers">Explore Beers</a></li>
             <li><a href="/styles">Styles</a></li>
             <li><a href="#">Events</a></li>
             <li role="separator" class="divider"></li>
@@ -52,7 +52,7 @@
   <%= sanitize(message) %>
   </div>
   <% end %>
-  
+
     <%= yield %>
 
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
