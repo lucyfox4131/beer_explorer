@@ -1,4 +1,24 @@
-<h1> Welcome, <%= current_user.name %> </h1>
+<h1> Welcome, <%= @user.name %> </h1>
 
-<h3>Sorry, you do not have any rated beers. Go rate some beers!</h3>
-<h3>Please rate beers in order to get recommendations</h3>
+<div class='container rated-beers'>
+  <% if @user.rated_beers.empty? %>
+    <h3>Sorry, you do not have any rated beers. Go rate some beers!</h3>
+  <% else %>
+    <div class="beers">
+      <ul>
+      <% @user.rated_beers.each do |rated_beer| %>
+        <li><%= link_to rated_beer.name, beer_path(rated_beer.api_id) %></li>
+      <% end %>
+    </ul>
+    </div>
+  <% end %>
+</div>
+
+<div class="container recommendations">
+  <% if @user.rated_beers.empty? %>
+    <h3>Please rate beers in order to get recommendations</h3>
+  <% else %>
+    <h3>Beer Recommendation For You</h3>
+    <%= link_to @beer.name, beer_path(@beer.beer_id) %>
+  <% end %>
+</div>

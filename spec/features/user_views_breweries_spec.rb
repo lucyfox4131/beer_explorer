@@ -1,17 +1,16 @@
 require 'rails_helper'
 
 RSpec.feature "Viewing Breweries" do
-  scenario "user views all breweries and can view one at a time" do
+  scenario "user searches for a brewery by name" do
     visit breweries_path
 
-    expect(page).to have_content("All Breweries")
-    expect(page).to have_content("#FREEDOM Craft Brewery")
-    expect(page).to have_link("#FREEDOM Craft Brewery")
+    expect(page).to have_content("Search for a brewery by name")
 
-    click_link "#FREEDOM Craft Brewery"
+    within ".brew-name-search" do
+      fill_in "brewery-name", with: "New Belgium Brewing"
+    end
 
-    expect(current_path).to eq(brewery_path("YXDiJk"))
-    expect(page).to have_content "#FREEDOM Craft Brewery"
-    expect(page).to have_content "#FREEDOM Craft Brewery Beers"
+    page.find("input#brew-search-by-name").click
+
   end
 end

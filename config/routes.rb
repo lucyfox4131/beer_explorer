@@ -6,10 +6,15 @@ Rails.application.routes.draw do
   get 'signout', to: 'sessions#destroy', as: 'signout'
   get '/dashboard', to: 'users#show'
 
+  namespace :service, defaults: { format: :json} do
+    get '/beer_search', to: 'beer_search#index', as: 'beer_search'
+    get '/brewery_search', to: 'brewery_search#index', as: 'brewery_search'
+  end
+
   resources :styles, only: [:index, :show]
   resources :sessions, only: [:create, :destroy]
   resource :home, only: [:show]
-  resources :beers, only: [:show]
+  resources :beers, only: [:index, :show]
   resources :breweries, only: [:index, :show]
   resources :rated_beers, only: [:create]
 end
