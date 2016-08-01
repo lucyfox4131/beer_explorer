@@ -42,10 +42,12 @@ describe "BeerService" do
     end
 
     it 'returns a single brewery by name' do
-      brewery = BeerService.new.brewery_by_name("New Belgium Brewing")['data'].first
-      
-      expect(brewery["id"]).to eq("Jt43j7")
-      expect(brewery["name"]).to eq("New Belgium Brewing")
+      VCR.use_cassette("brewery_by_name") do
+        brewery = BeerService.new.brewery_by_name("New Belgium Brewing")['data'].first
+
+        expect(brewery["id"]).to eq("Jt43j7")
+        expect(brewery["name"]).to eq("New Belgium Brewing")
+      end
     end
   end
 end
