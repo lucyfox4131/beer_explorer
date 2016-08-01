@@ -9,11 +9,8 @@ RSpec.feature "Beer Search" do
       within ".name-search" do
         fill_in "beer-name", with: "Cutthroat Porter"
       end
-      page.find("input#search-by-name").click
-    end
 
-    scenario "searches for a beer by location" do
-      #add this functionality
+      page.find("input#search-by-name").click
     end
   end
 end
