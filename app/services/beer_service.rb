@@ -61,13 +61,6 @@ class BeerService
     }
   end
 
-  def brewery_params
-    {
-      key: ENV["BREWERYAPIKEY"],
-      withLocations: "Y"
-    }
-  end
-
   def api_key
     {
       key: ENV["BREWERYAPIKEY"],

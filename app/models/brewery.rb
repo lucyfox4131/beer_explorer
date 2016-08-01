@@ -31,10 +31,4 @@ class Brewery
     brewery = service.find_brewery(id)
     new(brewery['data'])
   end
-
-  def self.create_breweries(breweries)
-    breweries['data'].map do |brewery|
-      new(brewery)
-    end
-  end
 end
