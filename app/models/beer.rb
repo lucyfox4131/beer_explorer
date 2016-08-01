@@ -7,8 +7,8 @@ class Beer
     @description        = beer["description"]
     @abv                = beer["abv"]
     @ibu                = beer["ibu"]
-    @style_name         = beer["style"]["name"]
-    @style_description  = beer["style"]["description"]
+    @style_name         = style_name(beer)
+    @style_description  = style_description(beer)
   end
 
   def self.create_beers(beers)
@@ -20,5 +20,13 @@ class Beer
   def self.find_beer(id)
     beer = BeerService.new.find_beer(id)
     new(beer["data"])
+  end
+
+  def style_name(beer)
+    beer["style"]["name"] if beer['style']
+  end
+
+  def style_description(beer)
+    beer["style"]["description"] if beer['style']
   end
 end

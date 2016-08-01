@@ -31,25 +31,23 @@ describe "BeerService" do
     end
   end
 
-  context "#all_breweries" do
-    it 'returns a list of all breweries' do
-      VCR.use_cassette("breweries") do
-        breweries = BeerService.new.all_breweries['data']
-        brewery = breweries.first
+  context "#find_brewery" do
+    it 'returns a single brewery by id for show page' do
+      VCR.use_cassette("brewery_by_id") do
+        brewery = BeerService.new.find_brewery("YXDiJk")['data']
 
-        expect(breweries.count).to eq(50)
         expect(brewery["id"]).to eq("YXDiJk")
         expect(brewery["name"]).to eq("#FREEDOM Craft Brewery")
       end
     end
-  end
 
-  context "#find_brewery" do
-    it 'returns a single brewery' do
-      brewery = BeerService.new.find_brewery("YXDiJk")['data']
+    it 'returns a single brewery by name' do
+      VCR.use_cassette("brewery_by_name") do
+        brewery = BeerService.new.brewery_by_name("New Belgium Brewing")['data'].first
 
-      expect(brewery["id"]).to eq("YXDiJk")
-      expect(brewery["name"]).to eq("#FREEDOM Craft Brewery")
+        expect(brewery["id"]).to eq("Jt43j7")
+        expect(brewery["name"]).to eq("New Belgium Brewing")
+      end
     end
   end
 end

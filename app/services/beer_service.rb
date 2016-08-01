@@ -8,16 +8,16 @@ class BeerService
     parse(connection.get("/v2/beers", name_params(name)))
   end
 
+  def brewery_by_name(name)
+    parse(connection.get("/v2/breweries", name_params(name)))
+  end
+
   def featured
     parse(connection.get("/v2/featured", api_key))
   end
 
   def all_styles
     parse(connection.get("/v2/styles", api_key))
-  end
-
-  def all_breweries
-    parse(connection.get("/v2/breweries", brewery_params))
   end
 
   def find_brewery(id)
@@ -58,13 +58,6 @@ class BeerService
     {
       key: ENV["BREWERYAPIKEY"],
       name: name
-    }
-  end
-
-  def brewery_params
-    {
-      key: ENV["BREWERYAPIKEY"],
-      withLocations: "Y"
     }
   end
 
