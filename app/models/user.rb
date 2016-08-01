@@ -12,4 +12,8 @@ class User < ApplicationRecord
       user.save!
     end
   end
+
+  def recommendations
+    Recommendations.new(self).generate
+  end
 end
