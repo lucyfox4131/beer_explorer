@@ -20,10 +20,6 @@ class BeerService
     parse(connection.get("/v2/styles", api_key))
   end
 
-  def all_breweries
-    parse(connection.get("/v2/breweries", brewery_params))
-  end
-
   def find_brewery(id)
     parse(connection.get("/v2/brewery/#{id}", api_key))
   end

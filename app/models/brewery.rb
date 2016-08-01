@@ -27,11 +27,6 @@ class Brewery
     Beer.create_beers(beers["data"])
   end
 
-  def self.all
-    breweries = service.all_breweries
-    create_breweries(breweries)
-  end
-
   def self.find(id)
     brewery = service.find_brewery(id)
     new(brewery['data'])
