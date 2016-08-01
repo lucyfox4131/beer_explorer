@@ -5,11 +5,16 @@
     <h3>Sorry, you do not have any rated beers. Go rate some beers!</h3>
   <% else %>
     <div class="beers">
+      <ul>
       <% @user.rated_beers.each do |rated_beer| %>
-      <%= link_to rated_beer.name, beer_path(rated_beer.api_id) %>
+        <li><%= link_to rated_beer.name, beer_path(rated_beer.api_id) %></li>
       <% end %>
+    </ul>
     </div>
   <% end %>
 </div>
 
-<h3>Please rate beers in order to get recommendations</h3>
+<div class="container recommendations">
+
+  <h3>Please rate beers in order to get recommendations</h3>
+</div>
