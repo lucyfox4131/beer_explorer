@@ -4,7 +4,7 @@ $(document).ready(function(){
     function addBeer(beer){
       console.log(beer);
       $(".beers").append(
-        "<div class='col-md-4' data-beer-api-id='"+ beer.data[0].id + "'>" + beer.data[0].name + "</div>"
+        "<div class='col-md-4'><a href='/beers/"+ beer.data[0].id + "'>" + beer.data[0].name + "</a></div>"
       )
     };
 
