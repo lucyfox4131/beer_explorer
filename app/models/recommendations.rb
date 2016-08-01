@@ -6,7 +6,12 @@ class Recommendations
 
   def generate
     beer = user.rated_beers.to_a.sample
-    num = rand(2)
+    if beer.style_id
+      num = rand(2)
+    else
+      num = 0
+    end
+
     recommendations(beer, num)
   end
 
@@ -15,7 +20,7 @@ class Recommendations
   end
 
   def recommendations(beer, num)
-    num == 1 ? rec_by_style(beer_id) : rec_by_brewery(beer_id)
+    num == 1 ? rec_by_style(beer) : rec_by_brewery(beer)
   end
 
   def rec_by_style(beer)

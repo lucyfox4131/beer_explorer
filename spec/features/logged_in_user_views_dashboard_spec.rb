@@ -25,9 +25,10 @@ RSpec.feature "Logged in User" do
 
   scenario "logged in user sees their rated beers" do
     user = create(:user, name: "Lucy Fox")
+    brewery = create(:rated_brewery, name: "New Belgium Brewing", api_id: "Jt43j7")
 
-    beer1 = create(:rated_beer, name: "Beer One")
-    beer2 = create(:rated_beer, name: "Beer Two")
+    beer1 = create(:rated_beer, name: "Beer One", style_id: "18", rated_brewery: brewery)
+    beer2 = create(:rated_beer, name: "Beer Two", style_id: "16", rated_brewery: brewery)
 
     user_rated_beer1 = create(:user_rated_beer, rated_beer: beer1, user: user)
     user_rated_beer2 = create(:user_rated_beer, rated_beer: beer2, user: user)
@@ -47,7 +48,7 @@ RSpec.feature "Logged in User" do
       expect(page).to have_link("Beer Two")
     end
 
-    expect(page).to have_content("Recommendations For You")
+    expect(page).to have_content("Beer Recommendation For You")
 
   end
 end

@@ -13,7 +13,8 @@ class User < ApplicationRecord
     end
   end
 
-  def recommendations
-    Recommendations.new(self).generate
+  def recommendation
+    beer = Recommendations.new(self).generate
+    Beer.new(beer)
   end
 end

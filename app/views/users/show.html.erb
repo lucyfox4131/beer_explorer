@@ -15,5 +15,10 @@
 </div>
 
 <div class="container recommendations">
-  <h3>Please rate beers in order to get recommendations</h3>
+  <% if @user.rated_beers.empty? %>
+    <h3>Please rate beers in order to get recommendations</h3>
+  <% else %>
+    <h3>Beer Recommendation For You</h3>
+    <%= link_to @beer.name, beer_path(@beer.beer_id) %>
+  <% end %>
 </div>
