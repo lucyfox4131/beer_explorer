@@ -29,7 +29,10 @@ gem 'rails_12factor', group: :production
 
 gem 'figaro'
 
-gem 'bootstrap-sass', '~> 3.3.6'
+# gem 'bootstrap-sass', '~> 3.3.6'
+gem "therubyracer"
+
+gem "less-rails-bootstrap"
 
 gem 'react-rails'
 # gem 'autoprefixer-rails'
