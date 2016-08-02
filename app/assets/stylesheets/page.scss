@@ -1,0 +1,32 @@
+#body{
+  #stage {
+    background-color: #A4C3B2;
+
+    min-width: 100%;
+    min-height: 100%;
+
+    width: 100%;
+    height: auto;
+
+    position: absolute;
+    left: 0;
+  }
+}
+
+.info-card {
+  color: #121619;
+  padding: 10px;
+  margin-bottom: 10px;
+  height: 200px;
+  background-color: #F6FFF8;
+
+  #card-links {
+    color: #2D4739;
+  }
+
+}
+
+.content-header {
+  margin-bottom: 20px;
+  text-align: center;
+}

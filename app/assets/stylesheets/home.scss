@@ -1,3 +1,26 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// .carousel img {
+//   position: absolute;
+//   // top: 0;
+//   left: 0;
+//   min-width: 100%;
+//   height: 500px;
+// }
+
+.carousel-inner > .item > img {
+    margin: 0 auto;
+}
+
+#carousel-example-generic {
+  max-width: 800px;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+.car-images {
+  max-height: 533px;
+  width: 100%;
+}
