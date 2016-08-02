@@ -1,4 +1,36 @@
 <div class="container">
+
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner" role="listbox">
+    <div class="item active">
+      <img src="<%= image_url('wood-barrels.jpg') %>" alt="First slide" class="car-images">
+    </div>
+    <div class="item">
+      <img src=" <%= image_url('summer.jpg') %> " alt="Second slide" class="car-images">
+    </div>
+    <div class="item">
+      <img src=" <%= image_url('mountains.jpg') %> " alt="Third slide" class="car-images">
+    </div>
+  </div>
+  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+    <span class="icon-prev" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+    <span class="icon-next" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+</div>
+
+
+<div class="container">
   <h1>Featured Brewery of The Week</h1>
   <%= @brewery.name %><br>
   <%= @brewery.description %><br>
