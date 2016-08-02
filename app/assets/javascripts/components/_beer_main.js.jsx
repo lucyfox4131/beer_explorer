@@ -3,7 +3,7 @@ var BeerMain = React.createClass({
     return (
       <div>
         <h1>Search for a beer by name</h1>
-        < BeerBody />
+        < BeerNameSearch />
       </div>
     )
   }
