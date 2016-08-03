@@ -8,7 +8,7 @@ RSpec.feature "Styles" do
     click_on "Styles"
 
     expect(current_path).to eq(styles_path)
-    expect(page).to have_content("Styles of beers")
+    expect(page).to have_content("Styles of Beers")
     expect(page).to have_link("Scottish-Style Light Ale")
 
     click_link "Scottish-Style Light Ale"

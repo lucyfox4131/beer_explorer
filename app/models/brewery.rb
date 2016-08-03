@@ -23,12 +23,16 @@ class Brewery
   end
 
   def beers
-    beers = BeerService.new.beers_for_brewery(self.brewery_id)
-    Beer.create_beers(beers["data"])
+    Rails.cache.fetch("brewery_beers_#{self.brewery_id}/beers", expires_in: 3.days) do
+      beers = BeerService.new.beers_for_brewery(self.brewery_id)
+      Beer.create_beers(beers["data"])
+    end
   end
 
   def self.find(id)
-    brewery = service.find_brewery(id)
-    new(brewery['data'])
+    Rails.cache.fetch("brewery_by_id_#{id}/find", expires_in: 3.days) do
+      brewery = service.find_brewery(id)
+      new(brewery['data'])
+    end
   end
 end

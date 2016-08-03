@@ -16,8 +16,10 @@ class Style
   end
 
   def self.get_all
-    styles = service.all_styles
-    create_styles(styles['data'])
+    Rails.cache.fetch("all_styles/get_all", expires_in: 3.days) do
+      styles = service.all_styles
+      create_styles(styles['data'])
+    end
   end
 
   def self.create_styles(styles)
@@ -27,13 +29,17 @@ class Style
   end
 
   def self.find_style(id)
-    style = service.find_style(id)
-    new(style['data'])
+    Rails.cache.fetch("beer_style_#{id}/find_style", expires_in: 3.days) do
+      style = service.find_style(id)
+      new(style['data'])
+    end
   end
 
   def beers
-    beers = BeerService.new.find_beers_for_style(self.style_id)
-    Beer.create_beers(beers["data"])
+    Rails.cache.fetch("beers_for_style#{self.style_id}", expires_in: 3.days) do
+      beers = BeerService.new.find_beers_for_style(self.style_id)
+      Beer.create_beers(beers["data"])
+    end
   end
 
   def info_paragraph

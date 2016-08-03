@@ -1,9 +1,19 @@
-<h1><%= @brewery.name %></h1>
+<% cache "#{@brewery.name} - #{@brewery.beers.count}" do %>
 
-<h3> <%= @brewery.name %> Beers:</h3>
+<div class="container">
+  <div class="header-box">
+    <h1 class='text-center'><%= @brewery.name %></h1>
+    <div class="text-center">
+      <p ><%= @brewery.description %></p>
+    </div>
+  </div>
 
-<ul>
-<% @brewery.beers.each do |beer| %>
-  <li><%= beer.name %></li>
+
+<h3 class="text-center"> <%= @brewery.name %> Beers:</h3>
+  <ul class="list-group">
+    <% @brewery.beers.each do |beer| %>
+    <li class="list-group-item beer-name-list"><%= link_to beer.name, beer_path(beer.beer_id) %></li>
+    <% end %>
+  </ul>
+</div>
 <% end %>
-</ul>
