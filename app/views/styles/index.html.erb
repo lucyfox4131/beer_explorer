@@ -1,8 +1,19 @@
-<h1>Styles of beers</h1>
+<h1 class="content-header" id="nav-links">Styles of Beers</h1>
+<br>
 
-<% @styles.each do |style| %>
-  <h3><%= link_to style.name, style_path(style.style_id) %>: </h3>
-  <p>
-    <%= style.description %>
-  </p>
+<div class="container text-center">
+
+<% cache "#{@styles.count}" do %>
+  <% @styles.each do |style| %>
+    <div class="col-md-4">
+      <div class="info-card">
+
+      <h4 class="text-center"><%= link_to style.name, style_path(style.style_id), id: "card-links" %></h4>
+      <p>
+        <%= truncate(style.description, :length => 200) %>
+      </p>
+    </div>
+    </div>
+  <% end %>
+  </div>
 <% end %>

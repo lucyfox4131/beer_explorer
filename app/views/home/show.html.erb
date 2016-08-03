@@ -1,13 +1,44 @@
-<div class="container">
-  <h1>Featured Brewery of The Week</h1>
-  <%= @brewery.name %><br>
-  <%= @brewery.description %><br>
+<div class="container col-md-8">
+  <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+      <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+      <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+      <div class="item active">
+        <img src="<%= image_url('wood-barrels.jpg') %>" alt="First slide" class="car-images">
+      </div>
+      <div class="item">
+        <img src=" <%= image_url('summer.jpg') %> " alt="Second slide" class="car-images">
+      </div>
+      <div class="item">
+        <img src=" <%= image_url('mountains.jpg') %> " alt="Third slide" class="car-images">
+      </div>
+    </div>
+    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+      <span class="icon-prev" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+      <span class="icon-next" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</div>
 
-  <h1>Featured Beer of The Week</h1>
-  <%= @beer.name %>
-  <p>
-    ABV:<%= @beer.abv %><br>
-    IBU:<%= @beer.ibu %><br>
-    <%= @beer.description %>
-  </p>
+<div class="container">
+  <h3>Featured Brewery & Beer</h3>
+  <br>
+    <% cache "#{@brewery.name}, #{@beer.name}" do %>
+      <strong><%= link_to @brewery.name, brewery_path(@brewery.brewery_id), class: "header-links" %></strong><br>
+      <%= truncate(@brewery.description, :length => 350) %><br>
+      <hr>
+      <strong><%= link_to @beer.name, beer_path(@beer.beer_id), class: "header-links" %></strong>
+      <p>
+        ABV: <%= @beer.abv %><br>
+        IBU: <%= @beer.ibu %><br>
+        <%= truncate(@beer.description, :length => 500) %>
+      </p>
+    <% end %>
 </div>

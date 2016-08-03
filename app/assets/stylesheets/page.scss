@@ -1,0 +1,63 @@
+#body{
+  #stage {
+    background-color: #A4C3B2;
+
+    min-width: 100%;
+    min-height: 100%;
+
+    width: 100%;
+    height: auto;
+
+    position: absolute;
+    left: 0;
+  }
+}
+
+.info-card {
+  color: #121619;
+  padding: 10px;
+  margin-bottom: 10px;
+  height: 200px;
+  background-color: #F6FFF8;
+
+  #card-links {
+    color: #2D4739;
+  }
+}
+
+.content-header {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.header-box {
+  width: 90%;
+  height: 37%;
+  color: #121619;
+  background-color: #F6FFF8;
+  margin: 0 auto;
+}
+
+.list-group {
+  .beer-name-list {
+    background-color: #F6FFF8;
+    color: #2D4739;
+  }
+}
+
+.rate-beer {
+  display: flex;
+  text-align: center;
+  margin: 10px;
+}
+
+.magic-center {
+  transform: translate(-50%, -50%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+.ratings {
+  margin: 10px;
+}
