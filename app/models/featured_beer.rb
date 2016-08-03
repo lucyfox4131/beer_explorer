@@ -1,6 +1,6 @@
 class FeaturedBeer
   def self.featured
-    featured = BeerService.new.featured
+    featured = FeaturedService.new.featured
     {brewery: get_brewery(featured), beer: get_beer(featured)}
   end
 

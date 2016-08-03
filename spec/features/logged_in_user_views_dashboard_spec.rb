@@ -48,7 +48,7 @@ RSpec.feature "Logged in User" do
       expect(page).to have_link("Beer Two")
     end
 
-    expect(page).to have_content("Beer Recommendation For You")
+    expect(page).to have_content("Beer Recommendations For You")
 
   end
 end

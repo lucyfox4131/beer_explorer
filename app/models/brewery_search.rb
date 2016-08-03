@@ -1,7 +1,7 @@
 class BrewerySearch
 
   def self.service
-    BeerService.new
+    BreweryService.new
   end
 
   def self.find_by(params)
