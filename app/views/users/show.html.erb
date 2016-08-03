@@ -23,11 +23,16 @@
   <% if @user.rated_beers.empty? %>
     <h3 class='content-header'>Please rate beers in order to get recommendations</h3>
   <% else %>
+  <% cache "#{@user.name}/recs/#{@user.user_rated_beers.maximum(:updated_at)}" do  %>
     <h3 class='content-header'>Beer Recommendations For You</h3>
       <div class="col-md-6">
+        <ul>
+
         <% @user.recommendations.each do |beer| %>
-          <%= link_to beer.name, beer_path(beer.beer_id), class: "header-links" %>
+          <li><%= link_to beer.name, beer_path(beer.beer_id), class: "header-links" %></li>
         <% end %>
+      </ul>
       </div>
+    <% end %>
   <% end %>
 </div>

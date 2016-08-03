@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  attr_reader :recommendations
+
   has_many :user_rated_beers
   has_many :rated_beers, through: :user_rated_beers
 
@@ -14,10 +16,11 @@ class User < ApplicationRecord
   end
 
   def recommendations
-    Rails.cache.fetch("#{self.name}-recs/#{self.user_rated_beers.count}/#{self.user_rated_beers.maximum(:updated_at)}") do
-      all = Recommendations.new(self)
+    recommendations = Rails.cache.fetch("#{self.name}-recs/#{self.user_rated_beers.count}/#{self.user_rated_beers.maximum(:updated_at)}") do
+      all = Recs.new(self)
       all.generate
-      all.recs.flatten
+      all.recs
     end
+    recommendations.flatten.sample(10)
   end
 end

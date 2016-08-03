@@ -1,4 +1,4 @@
-class Recommendations
+class Recs
   attr_reader :recs
 
   def initialize(current_user)
@@ -22,20 +22,18 @@ class Recommendations
 
   def rec_by_style(beer)
     if beer.style_id
-      beers = StyleService.new.find_beers_for_style(beer.style_id)['data']
-      create_beers(beers)
+      beer = StyleService.new.find_beers_for_style(beer.style_id)['data'].sample
+      create_beers(beer)
     end
   end
 
   def rec_by_brewery(beer)
-    beers = BreweryService.new.beers_for_brewery(beer.rated_brewery.api_id)["data"]
-    create_beers(beers)
+    beer = BreweryService.new.beers_for_brewery(beer.rated_brewery.api_id)["data"].sample
+    create_beers(beer)
   end
 
-  def create_beers(beers)
-    beers.map do |beer|
-      Beer.new(beer)
-    end
+  def create_beers(beer)
+    Beer.new(beer)
   end
 
   private
