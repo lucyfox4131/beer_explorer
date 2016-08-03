@@ -11,10 +11,22 @@
 
   <h3 class="text-center">Beers with this Style</h3>
     <ul class="list-group">
-    <% @style.beers.each do |beer| %>
+    <% @beers.each do |beer| %>
       <li class="list-group-item beer-name-list"><%= link_to beer.name, beer_path(beer.beer_id) %></li>
     <% end %>
   </ul>
 </div>
+
+
+<nav aria-label="Page navigation" class="text-center">
+  <ul class="pagination">
+    <% if @style.pages.count > 1 %>
+      <% @style.pages.each do |page| %>
+        <li class="page-item"><%= link_to page, style_path(@style.style_id, page: page)%></li>
+      <% end %>
+    <% end %>
+  </ul>
+</nav>
+
 
 </div>

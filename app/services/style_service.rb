@@ -8,8 +8,8 @@ class StyleService < BaseService
     parse(connection.get("/v2/style/#{id}", api_key))
   end
 
-  def find_beers_for_style(id)
-    parse(connection.get("/v2/beers", style_params(id)))
+  def find_beers_for_style(id, page = 1)
+    parse(connection.get("/v2/beers", style_params(id, page)))
   end
 
   private
@@ -19,10 +19,11 @@ class StyleService < BaseService
       }
     end
 
-    def style_params(id)
+    def style_params(id, page)
       {
         key: ENV["BREWERYAPIKEY"],
-        styleId: id
+        styleId: id,
+        p: page
       }
     end
 end
