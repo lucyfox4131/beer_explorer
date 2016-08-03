@@ -20,5 +20,18 @@ RSpec.describe Recommendation, type: :model do
       expect(Recommendation.count).to eq(0)
       expect(UserRecommendation.count).to eq(0)
     end
+
+    it "will generate if user rates positively" do
+      rating = 1
+      user = create(:user, name: "Lucy")
+      beer_id = "XXgGZ4"
+
+      expect(Recommendation.count).to eq(0)
+
+      Recommendation.generate_recs(rating, beer_id, user)
+
+      expect(Recommendation.count).to eq(0)
+      expect(Recommendation.last.name).to eq("Cutthroat Porter")
+    end
   end
 end
