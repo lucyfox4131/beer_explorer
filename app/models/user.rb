@@ -13,8 +13,11 @@ class User < ApplicationRecord
     end
   end
 
-  def recommendation
-    beer = Recommendations.new(self).generate
-    Beer.new(beer)
+  def recommendations
+    Rails.cache.fetch("#{self.name}-recs/#{self.user_rated_beers.count}/#{self.user_rated_beers.maximum(:updated_at)}") do
+      all = Recommendations.new(self)
+      all.generate
+      all.recs.flatten
+    end
   end
 end

@@ -25,7 +25,9 @@
   <% else %>
     <h3 class='content-header'>Beer Recommendations For You</h3>
       <div class="col-md-6">
-        <%= link_to @beer.name, beer_path(@beer.beer_id), class: "header-links" %>
+        <% @user.recommendations.each do |beer| %>
+          <%= link_to beer.name, beer_path(beer.beer_id), class: "header-links" %>
+        <% end %>
       </div>
   <% end %>
 </div>
