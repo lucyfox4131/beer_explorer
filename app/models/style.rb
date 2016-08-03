@@ -37,7 +37,7 @@ class Style
 
   def beers
     Rails.cache.fetch("beers_for_style#{self.style_id}", expires_in: 3.days) do
-      beers = service.find_beers_for_style(self.style_id)
+      beers = StyleService.new.find_beers_for_style(self.style_id)
       Beer.create_beers(beers["data"])
     end
   end
