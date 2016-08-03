@@ -3,6 +3,8 @@ class User < ApplicationRecord
 
   has_many :user_rated_beers
   has_many :rated_beers, through: :user_rated_beers
+  has_many :user_recommendations
+  has_many :recommendations, through: :user_recommendations
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_initialize.tap do |user|

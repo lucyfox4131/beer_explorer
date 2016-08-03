@@ -28,7 +28,7 @@ gem "omniauth-google-oauth2"
 gem 'rails_12factor', group: :production
 
 gem 'figaro'
-
+gem 'sidekiq'
 # gem 'bootstrap-sass', '~> 3.3.6'
 gem "therubyracer"
 
