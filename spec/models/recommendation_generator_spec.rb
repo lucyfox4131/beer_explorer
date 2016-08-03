@@ -1,19 +1,18 @@
 require 'rails_helper'
 
-describe "Recommendations" do
+describe "Recommendation Generator" do
   context "#rec_by_style" do
-    it "finds a beer based on style" do
+    it "finds beers with same style id" do
       user = create(:user)
       beer = create(:rated_beer, style_id: "18")
       user_rated_beer = create(:user_rated_beer, user: user, rated_beer: beer)
 
-      rec = Recommendations.new(user)
-      new_beer = rec.rec_by_style(beer)
+      beers = RecommendationGenerator.rec_by_style(beer)
 
-      expect(new_beer["styleId"]).to eq(18)
-      expect(new_beer["name"]).to_not eq(beer.name)
+      expect(beers.count).to eq(3)
     end
   end
+
   context "#rec_by_brewery" do
     it "finds a beer based on brewery" do
       user = create(:user)
@@ -21,12 +20,8 @@ describe "Recommendations" do
       beer = create(:rated_beer, rated_brewery: brewery)
       user_rated_beer = create(:user_rated_beer, user: user, rated_beer: beer)
 
-      rec = Recommendations.new(user)
-      new_beer = rec.rec_by_brewery(beer)
-      breweries = new_beer["breweries"].map {|brewery| brewery["name"]}
-
-      expect(new_beer["name"]).to_not eq(beer.name)
-      expect(breweries).to include(brewery.name)
+      beers = RecommendationGenerator.rec_by_brewery(beer)
+      expect(beers.count).to eq(3)
     end
   end
 end

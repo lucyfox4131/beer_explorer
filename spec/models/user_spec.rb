@@ -4,6 +4,8 @@ RSpec.describe User, type: :model do
   context "relationships" do
     it { should have_many(:user_rated_beers) }
     it { should have_many(:rated_beers) }
+    it { should have_many(:user_recommendations)}
+    it { should have_many(:recommendations)}
   end
 
   context "#rated beers" do

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature "Beer Show" do
   scenario "user successfully views a single beer" do
-    visit style_path("7")
+    visit style_path(7)
 
     expect(page).to have_content("Scottish-Style Light Ale")
     expect(page).to have_content("Beers with this Style")
