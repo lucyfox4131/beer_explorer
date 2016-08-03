@@ -51,7 +51,7 @@ class Style
 
   def pages
     pages_array = []
-    (1..@total_pages).each do |n|
+    (1..total_pages).each do |n|
       pages_array << n
     end
     pages_array

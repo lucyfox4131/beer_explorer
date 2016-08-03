@@ -31,4 +31,14 @@ FactoryGirl.define do
     user
     rated_beer
   end
+
+  factory :recommendation do
+    api_id "alskd"
+    name
+  end
+
+  factory :user_recommendation do
+    user
+    recommendation
+  end
 end
