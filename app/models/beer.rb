@@ -18,8 +18,10 @@ class Beer
   end
 
   def self.find_beer(id)
-    beer = BeerService.new.find_beer(id)
-    new(beer["data"])
+    Rails.cache.fetch("beer_by_id#{id}/find_beer", expires_in: 3.days) do
+      beer = BeerService.new.find_beer(id)
+      new(beer["data"])
+    end
   end
 
   def style_name(beer)

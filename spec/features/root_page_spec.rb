@@ -9,7 +9,7 @@ RSpec.feature "Root Page" do
       expect(page).to have_content("Start Exploring")
       expect(page).to have_content("Sign in with Google")
 
-      expect(page).to have_content("Featured Beer of The Week")
+      expect(page).to have_content("Featured Brewery & Beer")
       expect(page).to have_content("ABV")
       expect(page).to have_content("IBU")
     end

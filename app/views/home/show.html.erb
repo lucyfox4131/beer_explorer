@@ -30,13 +30,15 @@
 <div class="container">
   <h3>Featured Brewery & Beer</h3>
   <br>
-  <%= link_to @brewery.name, brewery_path(@brewery.brewery_id) %><br>
-  <%= truncate(@brewery.description, :length => 350) %><br>
-  <hr>
-  <%= link_to @beer.name, beer_path(@beer.beer_id) %>
-  <p>
-    ABV: <%= @beer.abv %><br>
-    IBU: <%= @beer.ibu %><br>
-    <%= truncate(@beer.description, :length => 500) %>
-  </p>
+    <% cache "#{@brewery.name}, #{@beer.name}" do %>
+      <strong><%= link_to @brewery.name, brewery_path(@brewery.brewery_id), class: "header-links" %></strong><br>
+      <%= truncate(@brewery.description, :length => 350) %><br>
+      <hr>
+      <strong><%= link_to @beer.name, beer_path(@beer.beer_id), class: "header-links" %></strong>
+      <p>
+        ABV: <%= @beer.abv %><br>
+        IBU: <%= @beer.ibu %><br>
+        <%= truncate(@beer.description, :length => 500) %>
+      </p>
+    <% end %>
 </div>

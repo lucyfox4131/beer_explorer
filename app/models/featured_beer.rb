@@ -5,10 +5,14 @@ class FeaturedBeer
   end
 
   def self.get_brewery(featured)
-    Brewery.new(featured['data']['brewery'])
+    Rails.cache.fetch("featured/get_brewery", expires_in: 7.days) do
+      Brewery.new(featured['data']['brewery'])
+    end
   end
 
   def self.get_beer(featured)
-    Beer.new(featured['data']['beer'])
+    Rails.cache.fetch("featured/get_beer", expires_in: 7.days) do
+      Beer.new(featured['data']['beer'])
+    end
   end
 end
