@@ -13,9 +13,10 @@ class RatedBeer < ApplicationRecord
       user_rating(beer.id, rating, current_user.id)
     else
       data = service.find_beer_with_breweries(beer_id)["data"]
-      new_beer = rate_brewery_and_beer(data)
-      user_rating(new_beer.id, rating, current_user.id)
+      beer = rate_brewery_and_beer(data)
+      user_rating(beer.id, rating, current_user.id)
     end
+    beer
   end
 
   def self.user_rating(beer_id, rating, user_id)

@@ -1,9 +1,7 @@
 class RecommendationGenerator
 
   def self.generate(rating, beer, current_user)
-    if rating != 0
-      create_recs(recommendations(beer), current_user)
-    end
+    create_recs(recommendations(beer), current_user) unless rating == 0
   end
 
   def self.create_recs(beers, current_user)
