@@ -11,7 +11,7 @@ class Brewery
   end
 
   def self.service
-    @service = @service ||= BeerService.new
+    @service = @service ||= BreweryService.new
   end
 
   def brewery_image(brewery)
@@ -24,7 +24,7 @@ class Brewery
 
   def beers
     Rails.cache.fetch("brewery_beers_#{self.brewery_id}/beers", expires_in: 3.days) do
-      beers = BeerService.new.beers_for_brewery(self.brewery_id)
+      beers = service.beers_for_brewery(self.brewery_id)
       Beer.create_beers(beers["data"])
     end
   end

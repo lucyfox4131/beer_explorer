@@ -11,12 +11,7 @@ class Recommendations
     else
       num = 0
     end
-
     recommendations(beer, num)
-  end
-
-  def service
-    BeerService.new
   end
 
   def recommendations(beer, num)
@@ -24,11 +19,11 @@ class Recommendations
   end
 
   def rec_by_style(beer)
-    service.find_beers_for_style(beer.style_id)['data'].sample
+    StyleService.new.find_beers_for_style(beer.style_id)['data'].sample
   end
 
   def rec_by_brewery(beer)
-    service.beers_for_brewery(beer.rated_brewery.api_id)["data"].sample
+    BreweryService.new.beers_for_brewery(beer.rated_brewery.api_id)["data"].sample
   end
 
   private
