@@ -5,7 +5,7 @@ class RatedBeersController < ApplicationController
     else
       beer = RatedBeer.rate(params["id"], params["rate"], current_user)
       if beer
-        # background worker process will go here, pass it rate, id, current_user
+        # background worker process will go here, pass it rate, beer, current_user
         flash["success"] = "You've rated #{params["name"]}"
       else
         flash["error"] = "Beer was not rated."

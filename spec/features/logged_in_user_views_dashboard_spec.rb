@@ -33,6 +33,11 @@ RSpec.feature "Logged in User" do
     user_rated_beer1 = create(:user_rated_beer, rated_beer: beer1, user: user)
     user_rated_beer2 = create(:user_rated_beer, rated_beer: beer2, user: user)
 
+    recommendation1, recommendation2 = create_list(:recommendation, 2)
+
+    user_recommendations1 = create(:user_recommendation, recommendation: recommendation1, user: user)
+    user_recommendations2 = create(:user_recommendation, recommendation: recommendation2, user: user)
+
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return( user )
 
     visit dashboard_path

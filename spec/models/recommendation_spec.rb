@@ -10,12 +10,12 @@ RSpec.describe Recommendation, type: :model do
     it "wont generate a rating if beer is disliked" do
       rating = 0
       user = create(:user, name: "Lucy")
-      beer_id = "XXgGZ4"
+      beer = create(:rated_beer, api_id: "XXgGZ4")
 
       expect(Recommendation.count).to eq(0)
       expect(UserRecommendation.count).to eq(0)
 
-      Recommendation.generate_recs(rating, beer_id, user)
+      RecommendationGenerator.generate(rating, beer, user)
 
       expect(Recommendation.count).to eq(0)
       expect(UserRecommendation.count).to eq(0)
@@ -24,14 +24,14 @@ RSpec.describe Recommendation, type: :model do
     it "will generate if user rates positively" do
       rating = 1
       user = create(:user, name: "Lucy")
-      beer_id = "XXgGZ4"
+      brewery = create(:rated_brewery, api_id: "Jt43j7")
+      beer = create(:rated_beer, api_id: "XXgGZ4", rated_brewery: brewery)
 
       expect(Recommendation.count).to eq(0)
 
-      Recommendation.generate_recs(rating, beer_id, user)
+      RecommendationGenerator.generate(rating, beer, user)
 
-      expect(Recommendation.count).to eq(0)
-      expect(Recommendation.last.name).to eq("Cutthroat Porter")
+      expect(Recommendation.count).to be > 0
     end
   end
 end

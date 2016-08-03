@@ -1,5 +1,4 @@
 class User < ApplicationRecord
-  attr_reader :recommendations
 
   has_many :user_rated_beers
   has_many :rated_beers, through: :user_rated_beers
@@ -15,14 +14,5 @@ class User < ApplicationRecord
       user.oauth_expires_at = Time.at(auth.credentials.expires_at)
       user.save!
     end
-  end
-
-  def recommendations
-    recommendations = Rails.cache.fetch("#{self.name}-recs/#{self.user_rated_beers.count}/#{self.user_rated_beers.maximum(:updated_at)}") do
-      all = Recs.new(self)
-      all.generate
-      all.recs
-    end
-    recommendations.flatten.sample(10)
   end
 end
