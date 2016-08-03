@@ -1,24 +1,31 @@
-<h1> Welcome, <%= @user.name %> </h1>
+<h1 class="content-header"> Welcome, <%= @user.name %> </h1>
 
-<div class='container rated-beers'>
+<div class='container rated-beers header-box'>
+  <% cache "#{@user.name}-#{@user.rated_beers.count}-#{@user.user_rated_beers.maximum(:updated_at)}" do %>
   <% if @user.rated_beers.empty? %>
-    <h3>Sorry, you do not have any rated beers. Go rate some beers!</h3>
+  <h3 class="content-header">Sorry, you do not have any rated beers. Go rate some beers!</h3>
   <% else %>
-    <div class="beers">
-      <ul>
+  <div class="beers">
+    <ul>
       <% @user.rated_beers.each do |rated_beer| %>
-        <li><%= link_to rated_beer.name, beer_path(rated_beer.api_id) %></li>
+      <div class="col-md-6">
+        <li><%= link_to rated_beer.name, beer_path(rated_beer.api_id), class: "header-links" %></li>
+      </div>
       <% end %>
     </ul>
-    </div>
+  </div>
+  <% end %>
   <% end %>
 </div>
+<hr>
 
 <div class="container recommendations">
   <% if @user.rated_beers.empty? %>
-    <h3>Please rate beers in order to get recommendations</h3>
+    <h3 class='content-header'>Please rate beers in order to get recommendations</h3>
   <% else %>
-    <h3>Beer Recommendation For You</h3>
-    <%= link_to @beer.name, beer_path(@beer.beer_id) %>
+    <h3 class='content-header'>Beer Recommendations For You</h3>
+      <div class="col-md-6">
+        <%= link_to @beer.name, beer_path(@beer.beer_id), class: "header-links" %>
+      </div>
   <% end %>
 </div>
