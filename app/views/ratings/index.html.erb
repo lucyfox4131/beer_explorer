@@ -5,7 +5,7 @@
   <div class="liked">
     <ul class="list-group">
       <% @liked.each do |beer| %>
-      <li class="list-group-item beer-name-list"> <%= link_to beer.name, beer_path(beer.api_id) %> </li>
+      <li class="list-group-item beer-name-list"> <%= link_to beer.name, beer_path(beer.api_id),  class: "header-links" %> </li>
       <% end %>
     </ul>
   </div>
@@ -16,7 +16,7 @@
   <div class="disliked">
     <ul class="list-group">
       <% @disliked.each do |beer| %>
-      <li class="list-group-item beer-name-list"> <%= link_to beer.name, beer_path(beer.api_id) %> </li>
+      <li class="list-group-item beer-name-list"> <%= link_to beer.name, beer_path(beer.api_id),  class: "header-links" %> </li>
       <% end %>
     </ul>
   </div>

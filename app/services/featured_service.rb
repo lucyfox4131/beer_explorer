@@ -8,7 +8,7 @@ class FeaturedService < BaseService
 
   def api_key
     {
-      key: ENV["BREWERYAPIKEY"],
+      key: ENV["BREWERYAPIKEY"]
     }
   end
 end

@@ -17,14 +17,10 @@ class User < ApplicationRecord
   end
 
   def liked_beers
-    user_rated_beers.where(rating: 1).map do |rated|
-      rated.rated_beer
-    end
+    user_rated_beers.where(rating: 1).map { |rated| rated.rated_beer }
   end
 
   def disliked_beers
-    user_rated_beers.where(rating: 0).map do |rated|
-      rated.rated_beer
-    end
+    user_rated_beers.where(rating: 0).map { |rated| rated.rated_beer }
   end
 end

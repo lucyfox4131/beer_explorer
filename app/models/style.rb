@@ -25,9 +25,7 @@ class Style
   end
 
   def self.create_styles(styles)
-    styles.map do |style|
-      new(style)
-    end
+    styles.map { |style| new(style) }
   end
 
   def self.find_style(id)

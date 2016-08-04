@@ -12,9 +12,7 @@ class Beer
   end
 
   def self.create_beers(beers)
-    beers.map do |beer|
-      new(beer)
-    end
+    beers.map { |beer| new(beer) }
   end
 
   def self.find_beer(id)
