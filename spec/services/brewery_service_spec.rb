@@ -33,4 +33,17 @@ describe "Brewery Service" do
       end
     end
   end
+
+  context "#brewery_by_zip" do
+    it "returns locations by zipcode" do
+      VCR.use_cassette("locations") do
+
+        locations = BreweryService.new.brewery_by_zip(80202)["data"]
+        location = locations.first
+
+        expect(location["name"]).to eq("Denver ChopHouse & Brewery")
+        expect(locations.count).to eq(6)
+      end
+    end
+  end
 end
