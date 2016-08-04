@@ -10,4 +10,12 @@ class UserRatedBeer < ApplicationRecord
       user_rated_beer.save!
     end
   end
+
+  def self.liked
+    where(rating: "1").map { |rating| rating.rated_beer }
+  end
+
+  def self.disliked
+    where(rating: "0").map { |rating| rating.rated_beer }
+  end
 end
