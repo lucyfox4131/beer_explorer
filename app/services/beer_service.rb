@@ -17,12 +17,6 @@ class BeerService < BaseService
     }
   end
 
-  def api_key
-    {
-      key: ENV["BREWERYAPIKEY"],
-    }
-  end
-
   def beer_with_breweries
     {
       key: ENV["BREWERYAPIKEY"],
