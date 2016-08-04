@@ -15,6 +15,7 @@ This app is a rails application hosted in production on heroku.
 * Ajax/JQuery
 * Rails MVC design
 * TDD with Capybara, VCR, ShouldaMatchers
+* Rails Caching
 
 ##### Setup
 ```
@@ -22,4 +23,9 @@ git clone git@github.com:lucyfox4131/beer_explorer.git
 cd beer_explorer
 bundle
 rake db:migrate
-rails s ```
+rails s
+
+To run the tests:
+rake tmp:cache:clear
+rspec
+```
