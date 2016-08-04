@@ -15,4 +15,16 @@ class User < ApplicationRecord
       user.save!
     end
   end
+
+  def liked_beers
+    user_rated_beers.where(rating: 1).map do |rated|
+      rated.rated_beer
+    end
+  end
+
+  def disliked_beers
+    user_rated_beers.where(rating: 0).map do |rated|
+      rated.rated_beer
+    end
+  end
 end

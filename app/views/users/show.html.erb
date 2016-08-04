@@ -1,37 +1,51 @@
-<h1 class="content-header"> Welcome, <%= @user.name %> </h1>
+<div class="container">
 
-<div class='container rated-beers header-box'>
-  <% cache "#{@user.name}-#{@user.rated_beers.count}-#{@user.user_rated_beers.maximum(:updated_at)}" do %>
-  <% if @user.rated_beers.empty? %>
-  <h3 class="content-header">Sorry, you do not have any rated beers. Go rate some beers!</h3>
-  <% else %>
-  <div class="beers">
-    <ul>
-      <% @user.rated_beers.each do |rated_beer| %>
-      <div class="col-md-6">
-        <li><%= link_to rated_beer.name, beer_path(rated_beer.api_id), class: "header-links" %></li>
+  <h1 class="content-header"> Welcome, <%= @user.name %> </h1>
+
+  <div class='rated-beers header-box'>
+
+      <% cache "#{@user.name}-#{@user.rated_beers.count}-#{@user.user_rated_beers.maximum(:updated_at)}" do %>
+      <% if @user.rated_beers.empty? %>
+      <h3 class="content-header">Sorry, you do not have any rated beers. Go rate some beers!</h3>
+      <% else %>
+      <div class="beers">
+        <div class="col-md-6">
+
+        <h3 class="content-header">Liked Beers</h3>
+        <ul class="list-group">
+          <% @user.liked_beers.each do |liked_beer| %>
+          <li class="list-group-item beer-name-list"><%= link_to liked_beer.name, beer_path(liked_beer.api_id), class: "header-links" %></li>
+          <% end %>
+        </ul>
+      </div>
+        <div class="col-md-6">
+
+        <h3 class="content-header">Disliked Beers</h3>
+        <ul class="list-group">
+          <% @user.disliked_beers.each do |disliked_beer| %>
+            <li class="list-group-item beer-name-list"><%= link_to disliked_beer.name, beer_path(disliked_beer.api_id), class: "header-links" %></li>
+          <% end %>
+        </ul>
       </div>
       <% end %>
-    </ul>
-  </div>
-  <% end %>
-  <% end %>
-</div>
-<hr>
 
-<div class="container recommendations">
-  <% if @user.user_recommendations.empty? %>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-md-12">
+
+    <% if @user.user_recommendations.empty? %>
     <h3 class='content-header'>Please rate beers in order to get recommendations</h3>
-  <% else %>
-  <% cache "#{@user.name}/recs/#{@user.user_rated_beers.maximum(:updated_at)}" do  %>
+    <% else %>
+    <% cache "#{@user.name}/recs/#{@user.user_rated_beers.maximum(:updated_at)}" do  %>
     <h3 class='content-header'>Beer Recommendations For You</h3>
-      <div class="col-md-6">
-        <ul>
-        <% @user.recommendations.each do |beer| %>
-          <li><%= link_to beer.name, beer_path(beer.api_id), class: "header-links" %></li>
-        <% end %>
-      </ul>
-      </div>
+    <ul class="list-group">
+      <% @user.recommendations.each do |beer| %>
+      <li class="list-group-item beer-name-list"><%= link_to beer.name, beer_path(beer.api_id), class: "header-links" %></li>
+      <% end %>
+    </ul>
     <% end %>
-  <% end %>
+    <% end %>
+  </div>
+
 </div>
