@@ -17,4 +17,5 @@ Rails.application.routes.draw do
   resources :beers, only: [:index, :show]
   resources :breweries, only: [:index, :show]
   resources :rated_beers, only: [:create]
+  resources :ratings, only: [:index]
 end

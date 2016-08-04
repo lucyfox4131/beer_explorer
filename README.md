@@ -1,24 +1,31 @@
-# README
+# BeerExplorer
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+##### This project represents the personal project that is the culmination of 3 modules at Turing School of Software and Design.
 
-Things you may want to cover:
+Core requirements for the project can be found at [this repo](https://github.com/turingschool/lesson_plans/blob/master/ruby_03-professional_rails_applications/self_directed_project.md)
 
-* Ruby version
+##### The Production app can be found [here](https://beerexplorer.herokuapp.com)
 
-* System dependencies
+This app is a rails application hosted in production on heroku.
 
-* Configuration
+##### Technologies Used:
+* Google oauth2
+* Redis with Sidekiq
+* React Rails
+* Ajax/JQuery
+* Rails MVC design
+* TDD with Capybara, VCR, ShouldaMatchers
+* Rails Caching
 
-* Database creation
+##### Setup
+```
+git clone git@github.com:lucyfox4131/beer_explorer.git
+cd beer_explorer
+bundle
+rake db:migrate
+rails s
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+To run the tests:
+rake tmp:cache:clear
+rspec
+```

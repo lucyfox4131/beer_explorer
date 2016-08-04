@@ -22,4 +22,34 @@ RSpec.describe User, type: :model do
       expect(user.rated_beers.count).to eq(2)
     end
   end
+
+  context "rated beers" do
+    it "returns only liked beers (rating of 1)" do
+      user = create(:user)
+      beer1 = create(:rated_beer, name: "Liked Beer")
+      user_rated_beer1 = create(:user_rated_beer, rated_beer: beer1, user: user, rating: 1)
+
+      beer2 = create(:rated_beer, name: "Disliked Beer")
+      user_rated_beer2 = create(:user_rated_beer, rated_beer: beer2, user: user, rating: 0)
+
+      liked_beers = user.liked_beers
+
+      expect(liked_beers.count).to eq(1)
+      expect(liked_beers.first.name).to eq("Liked Beer")
+    end
+
+    it "returns only beers with 'dislike' rating of 0" do
+      user = create(:user)
+      beer1 = create(:rated_beer, name: "Liked Beer")
+      user_rated_beer1 = create(:user_rated_beer, rated_beer: beer1, user: user, rating: 1)
+
+      beer2 = create(:rated_beer, name: "Disliked Beer")
+      user_rated_beer2 = create(:user_rated_beer, rated_beer: beer2, user: user, rating: 0)
+
+      disliked_beers = user.disliked_beers
+
+      expect(disliked_beers.count).to eq(1)
+      expect(disliked_beers.first.name).to eq("Disliked Beer")
+    end
+  end
 end
