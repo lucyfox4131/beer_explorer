@@ -12,7 +12,7 @@ class RatedBeer < ApplicationRecord
     if beer
       user_rating(beer.id, rating, current_user.id)
     else
-      data = service.find_beer_with_breweries(beer_id)["data"]
+      data = service.find_beer(beer_id)["data"]
       beer = rate_brewery_and_beer(data)
       user_rating(beer.id, rating, current_user.id)
     end

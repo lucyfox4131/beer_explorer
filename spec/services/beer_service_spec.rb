@@ -18,36 +18,13 @@ describe "BeerService" do
     end
   end
 
-  context "#all_styles" do
-    it 'returns a list of all styles' do
-      VCR.use_cassette("styles") do
-        styles = StyleService.new.all_styles['data']
-        style = styles.first
+  context "#find_beer" do
+    it "finds a beer by id" do
+      beer = BeerService.new.find_beer("iZZRvV")["data"]
 
-        expect(styles.count).to eq(170)
-        expect(style["id"]).to eq(1)
-        expect(style["name"]).to eq("Classic English-Style Pale Ale")
-      end
+      expect(beer["id"]).to eq("iZZRvV")
+      expect(beer["name"]).to eq("A Toast")
     end
   end
 
-  context "#find_brewery" do
-    it 'returns a single brewery by id for show page' do
-      VCR.use_cassette("brewery_by_id") do
-        brewery = BreweryService.new.find_brewery("YXDiJk")['data']
-
-        expect(brewery["id"]).to eq("YXDiJk")
-        expect(brewery["name"]).to eq("#FREEDOM Craft Brewery")
-      end
-    end
-
-    it 'returns a single brewery by name' do
-      VCR.use_cassette("brewery_by_name") do
-        brewery = BreweryService.new.brewery_by_name("New Belgium Brewing")['data'].first
-
-        expect(brewery["id"]).to eq("Jt43j7")
-        expect(brewery["name"]).to eq("New Belgium Brewing")
-      end
-    end
-  end
 end

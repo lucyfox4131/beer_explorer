@@ -5,10 +5,6 @@ class BeerService < BaseService
   end
 
   def find_beer(id)
-    parse(connection.get("/v2/beer/#{id}", api_key))
-  end
-
-  def find_beer_with_breweries(id)
     parse(connection.get("/v2/beer/#{id}", beer_with_breweries))
   end
 
