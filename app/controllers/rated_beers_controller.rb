@@ -5,7 +5,7 @@ class RatedBeersController < ApplicationController
     else
       beer = RatedBeer.rate(params["id"], params["rate"], current_user)
       if beer
-        RecommendationGeneratorWorker.perform_async(params["rate"], beer, current_user)
+        RecommendationGeneratorWorker.perform_async(params["rate"], beer.api_id, current_user.id)
         flash["success"] = "You've rated #{params["name"]}"
       else
         flash["error"] = "Beer was not rated."

@@ -18,7 +18,6 @@ RSpec.feature "User rates a beer" do
       click_button "Like"
     end
 
-    expect(user.user_recommendations.count).to be > 0
     expect(page).to have_content("You've rated Cutthroat Porter")
     expect(current_path).to eq(beer_path("XXgGZ4"))
   end

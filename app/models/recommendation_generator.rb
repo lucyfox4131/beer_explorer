@@ -1,7 +1,12 @@
 class RecommendationGenerator
 
-  def self.generate(rating, beer, current_user)
-    create_recs(recommendations(beer), current_user) unless rating == 0
+  def self.generate(rating, beer_id, current_user_id)
+    beer = RatedBeer.find_by(api_id: beer_id)
+    user = User.find(current_user_id)
+
+    if rating == "1"
+      create_recs(recommendations(beer), user)
+    end
   end
 
   def self.create_recs(beers, current_user)
