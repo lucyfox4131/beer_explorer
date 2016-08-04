@@ -12,6 +12,10 @@ class BreweryService < BaseService
     parse(connection.get("/v2/brewery/#{id}/beers", beer_with_breweries))
   end
 
+  def brewery_by_zip(zipcode)
+    parse(connection.get("/v2/locations", zip_params(zipcode)))
+  end
+
   private
   def name_params(name)
     {
@@ -30,6 +34,13 @@ class BreweryService < BaseService
     {
       key: ENV["BREWERYAPIKEY"],
       withBreweries: "Y"
+    }
+  end
+
+  def zip_params(zip)
+    {
+      key: ENV["BREWERYAPIKEY"],
+      postalCode: zip
     }
   end
 end
