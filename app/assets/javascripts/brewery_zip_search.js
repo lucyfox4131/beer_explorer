@@ -1,5 +1,4 @@
 $(document).ready(function(){
-  console.log("Hello");
 
     function addBrewery(brewery){
       console.log(brewery);
@@ -9,16 +8,18 @@ $(document).ready(function(){
     };
 
     function listBreweries(breweries){
-      $(".breweries").html("")
-      console.log(breweries);
-      $(breweries).each(function(index, brewery){
-        addBrewery(brewery)
-      })
+      if (breweries){
+        $(".breweries").html("")
+        $(breweries).each(function(index, brewery){
+          addBrewery(brewery)
+        })
+      } else {
+        $(".breweries").html("").append("We do not currently have breweries associated with that zip code.")
+      }
     };
 
     $("#brew-search-by-zip").on('click', function(){
       var breweryZip = $("#brewery-zip").val()
-      console.log(breweryZip);
 
       $.ajax({
         url: "/service/brewery_search",
