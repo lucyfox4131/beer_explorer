@@ -1,14 +1,23 @@
 <h1 class="content-header" id="nav-links">Styles of Beers</h1>
 <br>
 
+<div class="forms text-center">
+  <h1 class="body-header">Search Styles</h1>
+  <div class="style-search form-inline">
+    <%= text_field :search, :filter, placeholder: "Search", class: "form-control" %>
+    <button type="button" name="button-search" class="btn">Search</button>
+  </div>
+</div>
+
+
 <div class="container text-center">
 
-<% cache "#{@styles.count}" do %>
+<% cache "styles - #{@styles.count}" do %>
   <% @styles.each do |style| %>
     <div class="col-md-4">
       <div class="info-card">
 
-      <h4 class="text-center"><%= link_to style.name, style_path(style.style_id), id: "card-links" %></h4>
+      <h4 class="style-name text-center"><%= link_to style.name, style_path(style.style_id), id: "card-links" %></h4>
       <p>
         <%= truncate(style.description, :length => 200) %>
       </p>

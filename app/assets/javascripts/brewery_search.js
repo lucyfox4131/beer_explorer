@@ -1,5 +1,5 @@
 $(document).ready(function(){
-
+  searchFilter()
     function addBrewery(brewery){
       var message;
       if (brewery.data){
