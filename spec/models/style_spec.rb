@@ -13,6 +13,6 @@ describe "Style" do
     beers_page2 = style.beers(2)
 
     expect(beers_page2.count).to eq(50)
-    expect(beers_page2.first.name).to eq("DBA (Double Barrel Ale)")
+    expect(beers_page2.first.name).to eq("Curbside")
   end
 end
