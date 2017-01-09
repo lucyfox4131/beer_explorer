@@ -38,6 +38,6 @@ class RecommendationGenerator
   end
 
   def self.rec_by_brewery(beer)
-    beer = BreweryService.new.beers_for_brewery(beer.rated_brewery.api_id)["data"].sample(3)
+    BreweryService.new.beers_for_brewery(beer.rated_brewery.api_id)["data"].sample(3)
   end
 end
